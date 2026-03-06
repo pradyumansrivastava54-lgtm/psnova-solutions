@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Code2,
     Layout,
@@ -11,59 +11,82 @@ import {
     X
 } from 'lucide-react';
 
-const Services = () => {
-    const services = [
-        {
-            id: "01",
-            title: "Software Development Services",
-            description: "Custom, scalable software solutions engineered perfectly to align with your unique business goals and operations.",
-            features: ["Custom Web Applications", "Enterprise Software", "Legacy System Revival"],
-            icon: <Code2 className="h-8 w-8" />,
-            color: "from-blue-500 to-cyan-400"
-        },
-        {
-            id: "02",
-            title: "Frontend & UI/UX Services",
-            description: "Stunning, human-centric interfaces that provide intuitive experiences and captivating visual design.",
-            features: ["Responsive Web Design", "Interactive Prototypes", "Design Systems"],
-            icon: <Layout className="h-8 w-8" />,
-            color: "from-purple-500 to-pink-500"
-        },
-        {
-            id: "03",
-            title: "Backend & API Development",
-            description: "Robust, secure server-side architectures and seamless API integrations driving your applications.",
-            features: ["REST/GraphQL APIs", "Microservices Architecture", "Database Modeling"],
-            icon: <Server className="h-8 w-8" />,
-            color: "from-amber-500 to-orange-500"
-        },
-        {
-            id: "04",
-            title: "Cloud & DevOps Services",
-            description: "Streamlined deployment pipelines and scalable cloud infrastructures across AWS, Azure, and GCP.",
-            features: ["CI/CD Pipelines", "Containerization (Docker/K8s)", "Serverless Computing"],
-            icon: <Cloud className="h-8 w-8" />,
-            color: "from-emerald-500 to-teal-400"
-        },
-        {
-            id: "05",
-            title: "IT Support & Maintenance",
-            description: "Proactive 24/7 technical support and system monitoring to ensure infinite uptime and performance.",
-            features: ["24/7 System Monitoring", "Performance Optimization", "Security Patching"],
-            icon: <Settings className="h-8 w-8" />,
-            color: "from-brand-600 to-brand-800"
-        },
-        {
-            id: "06",
-            title: "Digital & Data Services",
-            description: "Actionable analytics, data engineering, and digital transformation strategies to empower decision-making.",
-            features: ["Business Intelligence", "Large Scale Data Pipelines", "Predictive Analytics"],
-            icon: <Database className="h-8 w-8" />,
-            color: "from-rose-500 to-red-500"
-        }
-    ];
+const servicesData = [
+    {
+        id: "01",
+        title: "Software Development Services",
+        description: "Custom, scalable software solutions engineered perfectly to align with your unique business goals and operations.",
+        features: ["Custom Web Applications", "Enterprise Software", "Legacy System Revival"],
+        icon: <Code2 className="h-8 w-8" />,
+        color: "from-blue-500 to-cyan-400"
+    },
+    {
+        id: "02",
+        title: "Frontend & UI/UX Services",
+        description: "Stunning, human-centric interfaces that provide intuitive experiences and captivating visual design.",
+        features: ["Responsive Web Design", "Interactive Prototypes", "Design Systems"],
+        icon: <Layout className="h-8 w-8" />,
+        color: "from-purple-500 to-pink-500"
+    },
+    {
+        id: "03",
+        title: "Backend & API Development",
+        description: "Robust, secure server-side architectures and seamless API integrations driving your applications.",
+        features: ["REST/GraphQL APIs", "Microservices Architecture", "Database Modeling"],
+        icon: <Server className="h-8 w-8" />,
+        color: "from-amber-500 to-orange-500"
+    },
+    {
+        id: "04",
+        title: "Cloud & DevOps Services",
+        description: "Streamlined deployment pipelines and scalable cloud infrastructures across AWS, Azure, and GCP.",
+        features: ["CI/CD Pipelines", "Containerization (Docker/K8s)", "Serverless Computing"],
+        icon: <Cloud className="h-8 w-8" />,
+        color: "from-emerald-500 to-teal-400"
+    },
+    {
+        id: "05",
+        title: "IT Support & Maintenance",
+        description: "Proactive 24/7 technical support and system monitoring to ensure infinite uptime and performance.",
+        features: ["24/7 System Monitoring", "Performance Optimization", "Security Patching"],
+        icon: <Settings className="h-8 w-8" />,
+        color: "from-brand-600 to-brand-800"
+    },
+    {
+        id: "06",
+        title: "Digital & Data Services",
+        description: "Actionable analytics, data engineering, and digital transformation strategies to empower decision-making.",
+        features: ["Business Intelligence", "Large Scale Data Pipelines", "Predictive Analytics"],
+        icon: <Database className="h-8 w-8" />,
+        color: "from-rose-500 to-red-500"
+    }
+];
 
-    const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
+const Services = () => {
+    const [selectedService, setSelectedService] = useState<typeof servicesData[0] | null>(null);
+
+    useEffect(() => {
+        const handleHashChange = () => {
+            const hash = window.location.hash;
+            if (hash.startsWith('#service-')) {
+                const id = hash.replace('#service-', '');
+                const service = servicesData.find(s => s.id === id);
+                if (service) {
+                    setSelectedService(service);
+                }
+            }
+        };
+        window.addEventListener('hashchange', handleHashChange);
+        handleHashChange();
+        return () => window.removeEventListener('hashchange', handleHashChange);
+    }, []);
+
+    const closeModal = () => {
+        setSelectedService(null);
+        if (window.location.hash.startsWith('#service-')) {
+            window.history.pushState(null, '', window.location.pathname + window.location.search + '#services');
+        }
+    };
 
     return (
         <section id="services" className="py-24 bg-slate-50 relative overflow-hidden">
@@ -80,8 +103,9 @@ const Services = () => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {services.map((service) => (
+                    {servicesData.map((service) => (
                         <div
+                            id={`service-${service.id}`}
                             key={service.id}
                             className="group bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl transition-all duration-300 border border-slate-100 hover:-translate-y-2 relative overflow-hidden flex flex-col h-full"
                         >
@@ -104,16 +128,13 @@ const Services = () => {
                                 {service.description}
                             </p>
 
-                            <button
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    setSelectedService(service);
-                                }}
+                            <a
+                                href={`#service-${service.id}`}
                                 className="inline-flex items-center gap-2 text-sm font-bold text-brand-900 group-hover:text-brand-accent transition-colors mt-auto focus:outline-none"
                             >
                                 Discover More
                                 <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
-                            </button>
+                            </a>
                         </div>
                     ))}
                 </div>
@@ -124,7 +145,7 @@ const Services = () => {
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-fade">
                     <div className="bg-white rounded-3xl w-full max-w-2xl overflow-hidden shadow-2xl relative">
                         <button
-                            onClick={() => setSelectedService(null)}
+                            onClick={closeModal}
                             className="absolute top-6 right-6 text-slate-400 hover:text-slate-800 transition-colors focus:outline-none"
                         >
                             <X size={24} />
@@ -161,7 +182,7 @@ const Services = () => {
                             <div className="mt-10 flex justify-end">
                                 <a
                                     href="#contact"
-                                    onClick={() => setSelectedService(null)}
+                                    onClick={closeModal}
                                     className="px-8 py-3 bg-brand-900 text-white rounded-full font-medium hover:bg-brand-accent transition-all duration-300 flex items-center gap-2 shadow-lg shadow-brand-900/20"
                                 >
                                     Get Started
