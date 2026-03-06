@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Rocket } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import logo from '../assets/logo_3.png';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -27,11 +28,12 @@ const Navbar = () => {
         >
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                        <Rocket className={`h-8 w-8 ${isScrolled ? 'text-brand-accent' : 'text-brand-accent'}`} />
-                        <span className={`text-2xl font-bold tracking-tight ${isScrolled ? 'text-brand-900' : 'text-slate-900'}`}>
-                            PSNOVA<span className="text-brand-accent">.</span>
-                        </span>
+                    <div className="flex items-center">
+                        <img
+                            src={logo}
+                            alt="PSNOVA Solutions"
+                            className="h-24 md:h-28 object-contain mix-blend-multiply"
+                        />
                     </div>
 
                     {/* Desktop Nav */}
