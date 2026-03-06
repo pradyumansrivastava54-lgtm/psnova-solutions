@@ -80,7 +80,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h4 className="text-sm font-bold text-slate-500 uppercase">Visit Us</h4>
-                                    <p className="text-lg font-medium text-brand-900">Unnao<br />Tech City</p>
+                                    <p className="text-lg font-medium text-brand-900">Noida</p>
                                 </div>
                             </div>
                         </div>
