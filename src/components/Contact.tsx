@@ -7,7 +7,7 @@ const Contact = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     // Replace with your Web3Forms Access Key
-    const accessKey = "05028668-3132-4e0b-8c35-635e4f20ea50";
+    const accessKey = "7c8f9d27-a4df-4fd1-ab79-2327127e4ead";
 
     const { submit } = useWeb3Forms({
         access_key: accessKey,
