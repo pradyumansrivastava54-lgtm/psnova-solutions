@@ -145,12 +145,12 @@ const Contact = () => {
                                         className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 outline-none transition-all bg-white appearance-none"
                                     >
                                         <option value="" disabled>Select a Service</option>
-                                        <option value="software">Software Development Services</option>
-                                        <option value="frontend">Frontend & UI/UX Services</option>
-                                        <option value="backend">Backend & API Development</option>
-                                        <option value="cloud">Cloud & DevOps Services</option>
-                                        <option value="support">IT Support & Maintenance</option>
-                                        <option value="data">Digital & Data Services</option>
+                                        <option value="Software Development Services">Software Development Services</option>
+                                        <option value="Frontend & UI/UX Services">Frontend & UI/UX Services</option>
+                                        <option value="Backend & API Development">Backend & API Development</option>
+                                        <option value="Cloud & DevOps Services">Cloud & DevOps Services</option>
+                                        <option value="IT support & Maintenance">IT Support & Maintenance</option>
+                                        <option value="Digital & Data Services">Digital & Data Services</option>
                                     </select>
                                 </div>
 

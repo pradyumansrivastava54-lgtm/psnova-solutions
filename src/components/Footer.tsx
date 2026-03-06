@@ -1,5 +1,6 @@
 import React from 'react';
-import { Rocket, Twitter, Linkedin, Github, Instagram } from 'lucide-react';
+import { Twitter, Linkedin, Github, Instagram } from 'lucide-react';
+import logo from '../assets/logo_2.png';
 
 const Footer = () => {
     return (
@@ -8,11 +9,12 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
 
                     <div className="space-y-6">
-                        <div className="flex items-center gap-2">
-                            <Rocket className="h-8 w-8 text-brand-accent" />
-                            <span className="text-2xl font-bold tracking-tight text-white">
-                                PSNOVA<span className="text-brand-accent">.</span>
-                            </span>
+                        <div className="flex items-center">
+                            <img
+                                src={logo}
+                                alt="PSNOVA Solutions"
+                                className="h-28 md:h-30 object-contain"
+                            />
                         </div>
                         <p className="text-sm leading-relaxed">
                             We empower businesses through custom software development, intuitive design, and scalable cloud solutions. Your vision, our engineering.
