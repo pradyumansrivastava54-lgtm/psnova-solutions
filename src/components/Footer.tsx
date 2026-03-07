@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Twitter, Linkedin, Github, Instagram } from 'lucide-react';
+import { Twitter, Linkedin, Github, Instagram, Facebook } from 'lucide-react';
 import logo from '../assets/logo_2.png';
 
 const Footer = () => {
@@ -47,14 +47,14 @@ const Footer = () => {
                             We empower businesses through custom software development, intuitive design, and scalable cloud solutions. Your vision, our engineering.
                         </p>
                         <div className="flex items-center gap-4 pt-2">
-                            <a href="#" className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-colors">
+                            <a href="https://x.com/PsnovaSolutions" className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-colors">
                                 <Twitter className="h-5 w-5" />
                             </a>
-                            <a href="#" className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-colors">
+                            <a href="https://www.linkedin.com/in/psnova-solutions-8b92ba3b3/" className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-colors">
                                 <Linkedin className="h-5 w-5" />
                             </a>
-                            <a href="#" className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-colors">
-                                <Github className="h-5 w-5" />
+                            <a href="https://www.facebook.com/profile.php?id=61588395677430" className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-colors">
+                                <Facebook className="h-5 w-5" />
                             </a>
                             <a href="https://www.instagram.com/psnova_solutions?igsh=bjg1c3lxbDVuOHZy" className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-colors">
                                 <Instagram className="h-5 w-5" />
