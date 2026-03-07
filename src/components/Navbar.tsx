@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import logo from '../assets/logo_3.png';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -28,13 +27,18 @@ const Navbar = () => {
         >
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex items-center justify-between">
-                    <div className="flex items-center">
-                        <img
-                            src={logo}
-                            alt="PSNOVA Solutions"
-                            className="h-24 md:h-28 object-contain mix-blend-multiply"
-                        />
-                    </div>
+                    <a href="#home" className="group">
+                        <div className="flex flex-col items-center pl-4 pt-1">
+                            <div className="flex items-center text-[2.75rem] leading-none font-sans font-black text-[#1a1b24] tracking-[-0.08em]">
+                                <span className="pr-[0.05rem]">psn</span>
+                                <span className="bg-clip-text text-transparent bg-gradient-to-tr from-[#8b5cf6] via-[#3b82f6] to-[#0ea5e9]">o</span>
+                                <span className="pl-[0.05rem]">va</span>
+                            </div>
+                            <div className="w-full pl-[5.5rem] -mt-1">
+                                <span className="text-[11px] font-bold text-[#1a1b24] tracking-[0.35em] uppercase">SOLUTIONS</span>
+                            </div>
+                        </div>
+                    </a>
 
                     {/* Desktop Nav */}
                     <nav className="hidden md:flex items-center gap-8">
@@ -66,28 +70,30 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Nav */}
-            {isMobileMenuOpen && (
-                <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-slate-100 py-4 px-4 flex flex-col gap-4">
-                    {navLinks.map((link) => (
+            {
+                isMobileMenuOpen && (
+                    <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t border-slate-100 py-4 px-4 flex flex-col gap-4">
+                        {navLinks.map((link) => (
+                            <a
+                                key={link.name}
+                                href={link.href}
+                                className="text-base font-medium text-slate-800 p-2 hover:bg-slate-50 rounded-lg"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                {link.name}
+                            </a>
+                        ))}
                         <a
-                            key={link.name}
-                            href={link.href}
-                            className="text-base font-medium text-slate-800 p-2 hover:bg-slate-50 rounded-lg"
+                            href="#contact"
+                            className="mt-2 text-center px-6 py-3 bg-brand-900 text-white rounded-xl text-base font-medium"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
-                            {link.name}
+                            Get Started
                         </a>
-                    ))}
-                    <a
-                        href="#contact"
-                        className="mt-2 text-center px-6 py-3 bg-brand-900 text-white rounded-xl text-base font-medium"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                        Get Started
-                    </a>
-                </div>
-            )}
-        </header>
+                    </div>
+                )
+            }
+        </header >
     );
 };
 
