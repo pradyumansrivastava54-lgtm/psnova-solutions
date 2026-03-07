@@ -56,7 +56,7 @@ const Footer = () => {
                             <a href="#" className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-colors">
                                 <Github className="h-5 w-5" />
                             </a>
-                            <a href="#" className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-colors">
+                            <a href="https://www.instagram.com/psnova_solutions?igsh=bjg1c3lxbDVuOHZy" className="h-10 w-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-colors">
                                 <Instagram className="h-5 w-5" />
                             </a>
                         </div>
